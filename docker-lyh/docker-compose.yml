@@ -1,28 +1,28 @@
 version: '3'
 services:
-    nginx:
-        volumes:
-            - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
-            - ./nginx/conf/php-fpm.conf:/etc/nginx/php-fpm.conf
-            - ./nginx/conf/fastcgi.conf:/etc/nginx/fastcgi.conf
-            - ./nginx/conf/proxy.conf:/etc/nginx/proxy.conf
-            - ./nginx/conf/vhost:/etc/nginx/vhost
-            - ./nginx/conf/rewrite:/etc/nginx/rewrite
-            - /data/logs/nginx:/data/logs/nginx
-            #定义项目目录
-            - ./www:/data/www
-            - /etc/localtime:/etc/localtime
-        restart: always
-        build: ./nginx
-        depends_on:
-            - elasticsearch-head
-        networks:
-            - frontend
-        ports:
-            - "80:80"
-            - "443:443"
-        #容器名称
-        container_name: nginx
+    # nginx:
+    #     volumes:
+    #         - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+    #         - ./nginx/conf/php-fpm.conf:/etc/nginx/php-fpm.conf
+    #         - ./nginx/conf/fastcgi.conf:/etc/nginx/fastcgi.conf
+    #         - ./nginx/conf/proxy.conf:/etc/nginx/proxy.conf
+    #         - ./nginx/conf/vhost:/etc/nginx/vhost
+    #         - ./nginx/conf/rewrite:/etc/nginx/rewrite
+    #         - /data/logs/nginx:/data/logs/nginx
+    #         #定义项目目录
+    #         - ./www:/data/www
+    #         - /etc/localtime:/etc/localtime
+    #     restart: always
+    #     build: ./nginx
+    #     depends_on:
+    #         - elasticsearch-head
+    #     networks:
+    #         - frontend
+    #     ports:
+    #         - "80:80"
+    #         - "443:443"
+    #     #容器名称
+    #     container_name: nginx
     elasticsearch:
         build: ./es
         container_name: elasticsearch
