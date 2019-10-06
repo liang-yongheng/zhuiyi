@@ -27,8 +27,8 @@ services:
         build: ./es
         container_name: elasticsearch
         volumes:
-            - /docker/elasticsearch/data:/usr/share/elasticsearch/data
-            - /docker/elasticsearch/logs:/usr/share/elasticsearch/logs
+            - /data/elasticsearch/data:/usr/share/elasticsearch/data
+            - /data/elasticsearch/logs:/usr/share/elasticsearch/logs
         ulimits:
             memlock:
                 soft: -1
