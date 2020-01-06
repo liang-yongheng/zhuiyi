@@ -1,0 +1,18 @@
+version: '3'
+services:
+    jenkins:
+        build: ./
+        volumes:
+            - /data/docker/jenkins:/var/jenkins_home
+            - ./jenkins.war:/usr/share/jenkins/jenkins.war
+        ports:
+            - "9080:8080"
+            - "50000:50000"
+        restart: always
+        networks:
+            frontend:
+                aliases:
+                    - jenkins
+        container_name: jenkins
+networks:
+    frontend:

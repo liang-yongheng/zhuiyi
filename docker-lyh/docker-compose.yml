@@ -44,17 +44,41 @@ services:
             frontend:
                 aliases:
                     - elasticsearch
-    elasticsearch-head:
-        build: ./es/head
+    # elasticsearch-head:
+    #     build: ./es/head
+    #     ports:
+    #         - "9100:9100"
+    #     depends_on:
+    #         - elasticsearch
+    #     networks:
+    #         frontend:
+    #             aliases:
+    #                 - elasticsearch-head
+    #     restart: always
+    #     container_name: elasticsearch-head
+    kibana:
+        build: ./kibana
         ports:
-            - "9100:9100"
-        depends_on:
-            - elasticsearch
+            - "5601:5601"
+        # depends_on:
+        #     - elasticsearch
         networks:
             frontend:
                 aliases:
-                    - elasticsearch-head
+                    - kibana
         restart: always
-        container_name: elasticsearch-head
+        container_name: kibana
+    logstash:
+        build: ./logstash
+        ports:
+            - "5601:5601"
+        # depends_on:
+        #     - elasticsearch
+        networks:
+            frontend:
+                aliases:
+                    - logstash
+        restart: always
+        container_name: logstash
 networks:
     frontend:
